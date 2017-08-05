@@ -19,7 +19,7 @@ cd ../..
 
 2. Download docker-compose.yml and edit for your project
 ```
-curl .....docker-compose.yml
+curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/docker-compose.yml > docker-compose.yml 
 #
 # Replace YOURPROJECT with the name of your project
 #
