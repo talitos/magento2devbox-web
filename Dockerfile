@@ -1,5 +1,5 @@
 FROM php:7.0.12-fpm
-MAINTAINER "Magento"
+MAINTAINER "Talos Digital"
 
 ENV PHP_EXTRA_CONFIGURE_ARGS="--enable-fpm --with-fpm-user=magento2 --with-fpm-group=magento2"
 
@@ -40,6 +40,8 @@ RUN apt-get update && apt-get install -y \
     && echo "xdebug.remote_host=127.0.0.1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.idekey=PHPSTORM" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.max_nesting_level=1000" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_autostart=true" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_connect_back=1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && chmod 666 /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && mkdir /var/run/sshd \
     && apt-get clean && apt-get update && apt-get install -y nodejs \
@@ -89,7 +91,6 @@ RUN chmod +x /usr/local/bin/unison.sh && chmod +x /usr/local/bin/entrypoint.sh \
 ENV PATH $PATH:/home/magento2/scripts/:/home/magento2/.magento-cloud/bin
 ENV PATH $PATH:/var/www/magento2/bin
 
-ENV USE_SHARED_WEBROOT 1
 ENV SHARED_CODE_PATH /var/www/magento2
 ENV WEBROOT_PATH /var/www/magento2
 ENV MAGENTO_ENABLE_SYNC_MARKER 0
@@ -113,17 +114,15 @@ RUN mkdir /mac-osx \
 # Initial scripts
 COPY scripts/ /home/magento2/scripts/
 RUN sed -i 's/^/;/' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && cd /home/magento2/scripts && composer install && chmod +x /home/magento2/scripts/m2init \
     && sed -i 's/^;;*//' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 RUN chown -R magento2:magento2 /home/magento2 && \
-    chown -R magento2:magento2 /var/www/magento2 && \
-    chmod 755 /home/magento2/scripts/bin/magento-cloud-login
+    chown -R magento2:magento2 /var/www/magento2
 
 # Delete user password to connect with ssh with empty password
 RUN passwd magento2 -d
 
-EXPOSE 80 22 5000 44100
+EXPOSE 80 22 5000 9000 44100
 WORKDIR /home/magento2
 
 USER root
