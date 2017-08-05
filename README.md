@@ -3,7 +3,7 @@
 The intention of this work is to have a workable DevBox for local development, simplified and useful for our company development.
 Please refer to Magento for latest updates.
 
-# Instructions
+# Installation
 
 1. Prepare your Magento installation (if you have your project already copy under ./shared/webroot)
 
@@ -17,7 +17,7 @@ php bin/magento sampledata:deploy
 cd ../..
 ```
 
-1. Download docker-compose.yml and edit for your project
+2. Download docker-compose.yml and edit for your project
 ```
 curl .....docker-compose.yml
 #
@@ -27,18 +27,18 @@ curl .....docker-compose.yml
 #
 ```
 
-1. Start your docker
+3. Start your docker
 ```
 docker-compose up --build -d
 ```
 
-1. Create database for installation (or import your database)
+4. Create database for installation (or import your database)
 ```
 mysql -h 0.0.0.0 -u root -p
 CREATE DATABASE magento2ce;
 ```
 
-1. Database settings
+5. Database settings
 ```
 #
 # Database Server Host: db
@@ -46,7 +46,14 @@ CREATE DATABASE magento2ce;
 # Database Server Password: root
 ```
 
-1. bin/magento access
+6. bin/magento access
 ```
 ssh -p 4022 magento2@localhost
 ```
+
+7. PHPSTORM xDebug setup (Mac)
+```
+sudo ifconfig en0 alias 10.254.254.254 255.255.255.0
+```
+
+
