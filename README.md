@@ -56,5 +56,7 @@ ssh -p 4022 magento2@localhost
 sudo ifconfig en0 alias 10.254.254.254 255.255.255.0
 ```
 
-[phpstorm1]: https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/phpstorm1.png "PHPSTORM config 1"
+![phpstorm1](https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/phpstorm1.png)
+![phpstorm2](https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/phpstorm2.png)
+![phpstorm3](https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/phpstorm3.png)
 
