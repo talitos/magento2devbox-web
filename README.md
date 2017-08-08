@@ -45,7 +45,7 @@ CREATE DATABASE magento2ce;
 ```
 
 6. Install Magento
-Go to your browser [http://local.magento2.com/](http://local.magento2.com/)
+Go to your browser [http://local.magento2ce.com/](http://local.magento2ce.com/)
 ```
 # Database Server Host: db
 # Database Server Username: root
@@ -85,7 +85,7 @@ cp YOUR_DATABASE_DUMP.sql ./shared/webroot
 ssh -p 4022 magento2@localhost # FYI password: magento2
 mysql -h db -uroot -proot
 CREATE DATABASE magento2;
-SOURCE /var/www/magento2/YOUR_DATABASE_DUMP.sql
+SOURCE /var/www/magento2/YOUR_DATABASE_DUMP.sql;
 ```
 
 6. Edit your env.php
