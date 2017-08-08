@@ -6,7 +6,7 @@
 version: '2'
 services:
     web:
-        container_name: talosdevbox_web_YOURPROJECT
+        container_name: talosdevbox_web
         restart: always
         image: talosdigital/magento2devbox-web:latest
         volumes:
@@ -22,7 +22,7 @@ services:
           - "9000:9000"
 
     db:
-        container_name: talosdevbox_db_YOURPROJECT
+        container_name: talosdevbox_db
         restart: always
         image: mysql:5.6
         ports:
