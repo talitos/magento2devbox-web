@@ -3,60 +3,104 @@
 The intention of this work is to have a workable DevBox for local development, simplified and useful for our company development.
 Please refer to Magento for latest updates.
 
-# Installation
+# Installation downloading Magento2
 
-1. Prepare your Magento installation (if you have your project already copy under ./shared/webroot)
-
+1. Prepare your Magento project folder
 ```
-mkdir -p shared
-composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition shared/webroot
-
-# Sample data if needed
-cd shared/webroot/
-php bin/magento sampledata:deploy
-cd ../..
-```
-
-2. Download docker-compose.yml and edit for your project
-```
+mkdir -p myproject
+cd myproject
 curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/docker-compose.yml > docker-compose.yml 
-#
-# Replace YOURPROJECT with the name of your project
-#
-# sed -i 's/YOURPROJECT/magento2ce/g' docker-compose.yml
-#
 ```
 
-3. Start your docker
+2. Start docker instances
+Make sure you have 80, 3360, 4022 and 9000 available in your computer.
 ```
 docker-compose up --build -d
 ```
 
-4. Create database for installation (or import your database)
+3. Download magento
 ```
-mysql -h 0.0.0.0 -u root -p
+ssh -p 4022 magento2@localhost # FYI password: magento2
+$ composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition ~/myproject
+mv ~/myproject/.* ~/myproject/* /var/www/magento2/
+rmdir ~/myproject
+
+# Sample data if needed
+$ cd /var/www/magento2
+$ php bin/magento sampledata:deploy
+```
+
+4. Network alias to your docker machine (Mac)
+```
+sudo ifconfig en0 alias 10.254.254.254 255.255.255.0
+sudo vi /etc/hosts
+10.254.254.254 local.magento2ce.com
+```
+
+5. Create database for installation
+```
+ssh -p 4022 magento2@localhost
+mysql -h db -uroot -proot
 CREATE DATABASE magento2ce;
 ```
 
-5. Database settings
+6. Install Magento
+Go to your browser [http://local.magento2.com/](http://local.magento2.com/)
 ```
-#
 # Database Server Host: db
 # Database Server Username: root
 # Database Server Password: root
 ```
 
-6. bin/magento access
+# Installation using your current Magento2 project
+
+1. Prepare your Magento project folder
 ```
-ssh -p 4022 magento2@localhost
+mkdir -p myproject
+cd myproject
+curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/docker-compose.yml > docker-compose.yml 
 ```
 
-7. PHPSTORM xDebug setup (Mac)
+2. Move your current installation into shared/webroot
+```
+mv ~/YOUR_CURRENT_PROJECT ./shared/webroot
+```
+
+3. Start docker instances
+Make sure you have 80, 3360, 4022 and 9000 available in your computer.
+```
+docker-compose up --build -d
+```
+
+4. Network alias to your docker machine (Mac)
 ```
 sudo ifconfig en0 alias 10.254.254.254 255.255.255.0
+sudo vi /etc/hosts
+10.254.254.254 local.magento2ce.com
 ```
+
+5. Import your database
+```
+cp YOUR_DATABASE_DUMP.sql ./shared/webroot
+ssh -p 4022 magento2@localhost # FYI password: magento2
+mysql -h db -uroot -proot
+CREATE DATABASE magento2;
+SOURCE /var/www/magento2/YOUR_DATABASE_DUMP.sql
+```
+
+6. Edit your env.php
+```
+# Database Server Host: db
+# Database Server Username: root
+# Database Server Password: root
+```
+
+# PHPSTORM xDebug setup (Mac)
 
 ![phpstorm1](https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/phpstorm1.png)
 ![phpstorm2](https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/phpstorm2.png)
 ![phpstorm3](https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/phpstorm3.png)
 
+# Passwords
+```MySQL: root root```
+```Linux: magento2 magento2```
