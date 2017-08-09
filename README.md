@@ -98,7 +98,7 @@ SOURCE /var/www/magento2/YOUR_DATABASE_DUMP.sql;
 
 # Alias on the loopback interface (lo0) script at startup (Mac)
 ```
-sudo bash -c "curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/com.network.alias.plist > /Library/LaunchDaemons/com.network.alias.plist"
+sudo bash -c "curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/php5.6/com.network.alias.plist > /Library/LaunchDaemons/com.network.alias.plist"
 sudo chmod 0644 /Library/LaunchDaemons/com.network.alias.plist
 sudo chown root:wheel /Library/LaunchDaemons/com.network.alias.plist
 sudo launchctl load /Library/LaunchDaemons/com.network.alias.plist
