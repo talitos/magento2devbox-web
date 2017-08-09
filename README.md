@@ -9,7 +9,7 @@ Please refer to Magento for latest updates.
 ```
 mkdir -p myproject
 cd myproject
-curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/docker-compose.yml > docker-compose.yml 
+curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/php5.6/docker-compose.yml > docker-compose.yml 
 ```
 
 2. Start docker instances
