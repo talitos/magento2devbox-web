@@ -21,7 +21,6 @@ services:
         ports:
           - "80:80"
           - "4022:22"
-          - "9000:9000"
 
     db:
         container_name: talosdevbox_db
