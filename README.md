@@ -22,7 +22,7 @@ docker-compose up --build -d
 ```
 ssh -p 4022 magento2@localhost # FYI password: magento2
 $ composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition ~/myproject
-mv ~/myproject/.* ~/myproject/* /var/www/magento2/
+mv ~/myproject/.[!.]* ~/myproject/* /var/www/magento2/
 rmdir ~/myproject
 
 # Sample data if needed
