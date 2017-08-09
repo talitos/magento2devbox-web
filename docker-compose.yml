@@ -6,9 +6,9 @@
 version: '2'
 services:
     web:
-        container_name: talosdevbox_web
+        container_name: talosdevbox_web_php56
         restart: always
-        image: talosdigital/magento2devbox-web:latest
+        image: talosdigital/magento2devbox-web:php5.6
         volumes:
           - "./shared/webroot:/var/www/magento2"
           - "~/.composer:/home/magento2/.composer"
@@ -22,7 +22,7 @@ services:
           - "9000:9000"
 
     db:
-        container_name: talosdevbox_db
+        container_name: talosdevbox_db_php56
         restart: always
         image: mysql:5.6
         ports:
