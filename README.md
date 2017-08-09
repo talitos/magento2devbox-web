@@ -32,7 +32,7 @@ $ php bin/magento sampledata:deploy
 
 4. Network alias to your docker machine (Mac)
 ```
-sudo ifconfig en0 alias 10.254.254.254 255.255.255.0
+sudo ifconfig lo0 alias 10.254.254.254 255.255.255.0 # check bellow how to add it at startup
 sudo vi /etc/hosts
 10.254.254.254 local.magento2ce.com
 ```
@@ -74,7 +74,7 @@ docker-compose up --build -d
 
 4. Network alias to your docker machine (Mac)
 ```
-sudo ifconfig en0 alias 10.254.254.254 255.255.255.0
+sudo ifconfig lo0 alias 10.254.254.254 255.255.255.0 # check bellow how to add it at startup
 sudo vi /etc/hosts
 10.254.254.254 local.magento2ce.com
 ```
@@ -93,6 +93,14 @@ SOURCE /var/www/magento2/YOUR_DATABASE_DUMP.sql;
 # Database Server Host: db
 # Database Server Username: root
 # Database Server Password: root
+```
+
+# Alias on the loopback interface (lo0) script at startup (Mac)
+```
+sudo curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/com.network.alias.plist > /Library/LaunchDaemons/com.network.alias.plist
+sudo chmod 0644 /Library/LaunchDaemons/com.network.alias.plist
+sudo chown root:wheel /Library/LaunchDaemons/com.network.alias.plist
+sudo launchctl load /Library/LaunchDaemons/com.network.alias.plist
 ```
 
 # PHPSTORM xDebug setup (Mac)
