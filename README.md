@@ -58,7 +58,7 @@ Go to your browser [http://local.magento2ce.com/](http://local.magento2ce.com/)
 ```
 mkdir myproject
 cd myproject
-curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/docker-compose.yml > docker-compose.yml 
+curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/php5.6/docker-compose.yml > docker-compose.yml 
 ```
 
 2. Move your current installation into shared/webroot
