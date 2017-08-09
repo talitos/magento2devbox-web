@@ -56,13 +56,14 @@ Go to your browser [http://local.magento2ce.com/](http://local.magento2ce.com/)
 
 1. Prepare your Magento project folder
 ```
-mkdir -p myproject
+mkdir myproject
 cd myproject
 curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/docker-compose.yml > docker-compose.yml 
 ```
 
 2. Move your current installation into shared/webroot
 ```
+mkdir shared
 mv ~/YOUR_CURRENT_PROJECT ./shared/webroot
 ```
 
