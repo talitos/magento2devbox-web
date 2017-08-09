@@ -56,7 +56,6 @@ RUN apt-get update && apt-get install -y \
     && a2enmod proxy_fcgi \
     && rm -f /etc/apache2/sites-enabled/000-default.conf \
     && useradd -m -d /home/magento2 -s /bin/bash magento2 && adduser magento2 sudo \
-    && echo -e "magento2\nmagento2" | passwd magento2 \
     && touch /etc/sudoers.d/privacy \
     && echo "Defaults        lecture = never" >> /etc/sudoers.d/privacy \
     && mkdir /home/magento2/magento2 && mkdir /var/www/magento2 \
@@ -68,9 +67,10 @@ RUN apt-get update && apt-get install -y \
 # PHP config
 ADD conf/php.ini /usr/local/etc/php
 
-# SSH config
+# SSH config & password
 COPY conf/sshd_config /etc/ssh/sshd_config
 RUN chown magento2:magento2 /etc/ssh/ssh_config
+RUN echo -e "magento2\nmagento2" | passwd magento2
 
 # supervisord config
 ADD conf/supervisord.conf /etc/supervisord.conf
