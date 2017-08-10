@@ -15,7 +15,7 @@ curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/do
 2. Start docker instances
 Make sure you have 80, 3360, 4022 and 9000 available in your computer.
 ```
-docker-compose up --build -d
+docker-compose up
 ```
 
 3. Download magento
@@ -70,7 +70,7 @@ mv ~/YOUR_CURRENT_PROJECT ./shared/webroot
 3. Start docker instances
 Make sure you have 80, 3360, 4022 and 9000 available in your computer.
 ```
-docker-compose up --build -d
+docker-compose up
 ```
 
 4. Network alias to your docker machine (Mac)
