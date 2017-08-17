@@ -1,0 +1,21 @@
+syncs:
+  simplest-sync:
+    src: './app'
+    dest: '/var/www/magento2'
+    sync_host_port: 10872
+    sync_strategy: 'unison'
+    sync_user: 'magento2'
+    sync_userid: '1000'
+    sync_args:
+      - "-ignore='Path .idea'"
+      - "-ignore='Path .git'"
+      - "-ignore='BelowPath .git'"
+      - "-ignore='Path dev/*'"
+      - "-ignore='Path phpserver/*'"
+      - "-ignore='Path pub/static/*'"
+      - "-ignore='Path setup/*'"
+      - "-ignore='Path var/composer_home/*'"
+      - "-ignore='Path var/page_cache/*'"
+      - "-ignore='Path var/cache/*'"
+      - "-ignore='Path var/sessions/*'"
+      - "-ignore='Path node_modules/*'"

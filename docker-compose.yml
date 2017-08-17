@@ -33,3 +33,7 @@ services:
           - "./shared/db:/var/lib/mysql"
           - "./shared/var/logs/mysql:/var/log/mysql"
 
+volumes:
+  simplest-sync:
+    external: true
+    
