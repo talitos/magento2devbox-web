@@ -84,6 +84,16 @@ ADD conf/apache-default.conf /etc/apache2/sites-enabled/apache-default.conf
 # unison script
 ADD conf/.unison/magento2.prf /home/magento2/.unison/magento2.prf
 
+# Postfix
+run echo "postfix postfix/main_mailer_type string Internet site" > preseed.txt
+run echo "postfix postfix/mailname string mail.example.com" >> preseed.txt
+run debconf-set-selections preseed.txt
+run DEBIAN_FRONTEND=noninteractive apt-get install -q -y postfix
+run postconf -e myhostname=mail.example.com
+run postconf -e mydestination="mail.example.com, example.com, localhost.localdomain, localhost"
+run postconf -e mail_spool_directory="/var/spool/mail/"
+run postconf -e mailbox_command=""
+
 ADD conf/unison.sh /usr/local/bin/unison.sh
 ADD conf/entrypoint.sh /usr/local/bin/entrypoint.sh
 ADD conf/check-unison.sh /usr/local/bin/check-unison.sh
