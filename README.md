@@ -3,6 +3,14 @@
 The intention of this work is to have a workable DevBox for local development, simplified and useful for our company development.
 Please refer to Magento for latest updates.
 
+# Pre-Installation
+1. Install docker-sync for improved sync strategy
+```
+sudo gem install docker-sync
+brew install unison
+sudo easy_install pip && sudo pip install macfsevents
+```
+
 # Installation downloading Magento2
 
 1. Prepare your Magento project folder
