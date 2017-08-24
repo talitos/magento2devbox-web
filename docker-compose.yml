@@ -1,20 +1,15 @@
-##
-# Services needed to run Magento2 application on Docker
-#
-# Docker Compose defines required services and attach them together through aliases
-##
 version: '2'
 services:
     web:
         container_name: talosdevbox_web
         image: talosdigital/magento2devbox-web:latest
         volumes:
-          - "./shared/webroot:/var/www/magento2"
           - "~/.composer:/home/magento2/.composer"
           - "~/.ssh:/home/magento2/.ssh"
           - "./shared/logs/apache2:/var/log/apache2"
           - "./shared/logs/php-fpm:/var/log/php-fpm"
           - "./shared/.magento-cloud:/home/magento2/.magento-cloud"
+          - talosdevbox_sync:/var/www/magento2:nocopy
         expose:
           - "9000"
         ports:
@@ -33,3 +28,6 @@ services:
           - "./shared/db:/var/lib/mysql"
           - "./shared/var/logs/mysql:/var/log/mysql"
 
+volumes:
+  talosdevbox_sync:
+    external: true

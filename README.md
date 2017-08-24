@@ -10,11 +10,22 @@ Please refer to Magento for latest updates.
 mkdir -p myproject
 cd myproject
 curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/docker-compose.yml > docker-compose.yml 
+curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/docker-sync.yml > docker-sync.yml 
 ```
 
-2. Start docker instances
+2. Modify keys for your project
+#
+# file: docker-compose.yml
+#   replace `talosdevbox` with `talosdevbox_YOUR_PROJECT_ID`
+#
+# file: docker-sync.yml
+#   replace `talosdevbox` with `talosdevbox_YOUR_PROJECT_ID`
+
+3. Start docker instances and docker-sync (two terminals)
 Make sure you have 80, 3360, 4022 and 9000 available in your computer.
 ```
+mkdir -p shared/webroot/
+docker-sync start --foreground
 docker-compose up
 ```
 
