@@ -82,7 +82,7 @@ Clean sync cache
 
 ```docker-sync clean```
 
-# Alias on the loopback interface (lo0) script at startup (Mac)
+# Loopback alias interface (lo0) script at startup (Mac)
 ```
 sudo bash -c "curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/com.network.alias.plist > /Library/LaunchDaemons/com.network.alias.plist"
 sudo chmod 0644 /Library/LaunchDaemons/com.network.alias.plist
