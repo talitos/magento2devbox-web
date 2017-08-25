@@ -4,7 +4,7 @@ options:
   verbose: true
 syncs:
   #IMPORTANT: ensure this name is unique and does not match your other application container name
-  simplest-sync:
+  talosdevbox_sync:
     src: './shared/webroot'
     sync_excludes: ['.idea','.git', 'var/cache', 'var/full_page_cache']
     sync_userid: '1000'

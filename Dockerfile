@@ -48,6 +48,7 @@ RUN apt-get update && apt-get install -y \
     && a2enmod rewrite \
     && a2enmod proxy \
     && a2enmod proxy_fcgi \
+    && a2enmod headers \
     && rm -f /etc/apache2/sites-enabled/000-default.conf \
     && useradd -m -d /home/magento2 -s /bin/bash magento2 && adduser magento2 sudo \
     && echo "magento2:magento2" | chpasswd \
