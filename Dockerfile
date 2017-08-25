@@ -58,7 +58,9 @@ RUN apt-get update && apt-get install -y \
     && mkdir /home/magento2/state \
     && curl -sS https://accounts.magento.cloud/cli/installer -o /home/magento2/installer \
     && rm -r /usr/local/etc/php-fpm.d/* \
-    && sed -i 's/www-data/magento2/g' /etc/apache2/envvars
+    && sed -i 's/www-data/magento2/g' /etc/apache2/envvars \
+    && mkdir /etc/apache2/host-config \
+    && echo "IncludeOptional host-config/*.conf" >> /etc/apache2/apache2.conf
 
 # PHP config
 ADD conf/php.ini /usr/local/etc/php
