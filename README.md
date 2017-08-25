@@ -3,6 +3,19 @@
 The intention of this work is to have a workable DevBox for local development, simplified and useful for our company development.
 Please refer to Magento for latest updates.
 
+# Software requirements
+1. Docker
+2. Brew
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+3. docker-sync and unison
+```
+sudo gem install docker-sync
+brew install unison
+sudo easy_install pip && sudo pip install macfsevents
+```
+
 # Installation
 
 1. Prepare your project folder
@@ -82,7 +95,7 @@ Clean sync cache
 
 ```docker-sync clean```
 
-# Loopback alias interface (lo0) script at startup (Mac)
+# Alias loopback interface (lo0) script at startup (Mac)
 ```
 sudo bash -c "curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/com.network.alias.plist > /Library/LaunchDaemons/com.network.alias.plist"
 sudo chmod 0644 /Library/LaunchDaemons/com.network.alias.plist
