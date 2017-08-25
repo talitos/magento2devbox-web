@@ -1,0 +1,11 @@
+version: "2"
+
+options:
+  verbose: true
+syncs:
+  #IMPORTANT: ensure this name is unique and does not match your other application container name
+  talosdevbox_sync:
+    src: './shared/webroot'
+    sync_excludes: ['.idea','.git', 'var/cache', 'var/page_cache', 'var/view_processed']
+    sync_userid: '1000'
+    sync_strategy: 'unison'
