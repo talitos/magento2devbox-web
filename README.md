@@ -111,4 +111,5 @@ sudo launchctl load /Library/LaunchDaemons/com.network.alias.plist
 
 # Passwords
 ```MySQL: root root```
+
 ```Linux: magento2 magento2```
