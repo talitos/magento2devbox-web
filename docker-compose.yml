@@ -8,6 +8,7 @@ services:
           - "~/.ssh:/home/magento2/.ssh"
           - "./shared/logs/apache2:/var/log/apache2"
           - "./shared/logs/php-fpm:/var/log/php-fpm"
+          - "./shared/apache2:/etc/apache2/host-config"
           - talosdevbox_sync:/var/www/magento2:nocopy
         expose:
           - "9000"

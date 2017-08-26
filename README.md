@@ -3,7 +3,7 @@
 The intention of this work is to have a workable DevBox for local development, simplified and useful for our company development.
 Please refer to Magento for latest updates.
 
-**THIS BRANCH IS TO SUPPORT Magento1 PROJECTS on Docker**
+**PHP5.6** THIS BRANCH IS TO SUPPORT Magento1 PROJECTS on Docker
 
 # Software requirements
 1. Docker
