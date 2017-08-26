@@ -3,6 +3,8 @@
 The intention of this work is to have a workable DevBox for local development, simplified and useful for our company development.
 Please refer to Magento for latest updates.
 
+** IF YOU WANT TO RUN MAGENTO1 CHECK TAG talosdigital/magento2devbox-web:php5.6 **
+
 # Software requirements
 1. Docker
 2. Brew
