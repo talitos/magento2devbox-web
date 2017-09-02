@@ -49,6 +49,7 @@ RUN apt-get update && apt-get install -y \
     && a2enmod proxy \
     && a2enmod proxy_fcgi \
     && a2enmod headers \
+    && a2enmod ssl \
     && rm -f /etc/apache2/sites-enabled/000-default.conf \
     && useradd -m -d /home/magento2 -s /bin/bash magento2 && adduser magento2 sudo \
     && echo "magento2:magento2" | chpasswd \
@@ -61,6 +62,10 @@ RUN apt-get update && apt-get install -y \
     && sed -i 's/www-data/magento2/g' /etc/apache2/envvars \
     && mkdir /etc/apache2/host-config \
     && echo "IncludeOptional host-config/*.conf" >> /etc/apache2/apache2.conf
+
+# Apache2 SSL self-signed certificate
+RUN mkdir /etc/apache2/ssl
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt -subj "/C=US/ST=TD/L=Talos/O=Dis/CN=www.example.com"
 
 # PHP config
 ADD conf/php.ini /usr/local/etc/php
@@ -106,7 +111,7 @@ RUN sed -i 's/^/;/' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
 RUN chown -R magento2:magento2 /home/magento2 && \
     chown -R magento2:magento2 /var/www/magento2
 
-EXPOSE 80 22 5000 9000 44100
+EXPOSE 80 22 443 5000 9000 44100
 WORKDIR /home/magento2
 
 USER root
