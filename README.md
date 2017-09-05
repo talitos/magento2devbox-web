@@ -97,6 +97,10 @@ Clean sync cache
 
 ```docker-sync clean```
 
+Remove conflicted files
+
+```find . -name '*: conflict*' -exec rm -rf {} \;```
+
 # Alias loopback interface (lo0) script at startup (Mac)
 ```
 sudo bash -c "curl https://raw.githubusercontent.com/talosdigital/magento2devbox-web/master/com.network.alias.plist > /Library/LaunchDaemons/com.network.alias.plist"
